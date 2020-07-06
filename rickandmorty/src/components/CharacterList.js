@@ -1,8 +1,10 @@
 import React from 'react';
 
+import { CharacterCard } from './CharacterCard/index';
+
 const CharacterList = () => {
     return (
-        <h1>CharacterList</h1>
+        <CharacterCard />
     )
 }
 

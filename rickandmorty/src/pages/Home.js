@@ -4,8 +4,9 @@ import EpisodeList from '../components/EpisodeList';
 import LocationList from '../components/LocationList';
 import CharacterList from '../components/CharacterList';
 
-import { MenuItem } from './styles/styles';
-import Logo from '../img/logo.png';
+import { MenuItem, Img } from './styles/styles';
+import Logo from '../img/logo.svg';
+import './styles/style.css';
 
 const Home = () => {
 
@@ -33,14 +34,19 @@ const Home = () => {
 
     return (
         <React.Fragment>
+            <Img src={Logo} className='img-fluid rounded mx-auto d-block' alt='logo'/>
 
-            <img src={Logo} alt='logo'/>
-
-            <div>
-                <MenuItem active={character} onClick={handleClickCharacter}>Characters</MenuItem>
-                <MenuItem active={location} onClick={handleClickLocation}>Locations</MenuItem>
-                <MenuItem active={episode} onClick={handleClickEpisode}>Episodes</MenuItem>
-            </div>
+            <ul className="nav justify-content-center">
+                <li className="nav-item">
+                    <MenuItem className="nav-link" active={character} onClick={handleClickCharacter}>CHARACTERS</MenuItem>
+                </li>
+                <li className="nav-item">
+                    <MenuItem className="nav-link" active={location} onClick={handleClickLocation}>LOCATIONS</MenuItem>
+                </li>
+                <li className="nav-item">
+                    <MenuItem className="nav-link" active={episode} onClick={handleClickEpisode}>EPISODES</MenuItem>
+                </li>
+            </ul> 
 
             <div>
                 {character && <CharacterList />}
