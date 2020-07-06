@@ -48,7 +48,7 @@ const Home = () => {
                 </li>
             </ul> 
 
-            <div>
+            <div className='container p-4'>
                 {character && <CharacterList />}
                 {location && <LocationList />}
                 {episode && <EpisodeList />}
