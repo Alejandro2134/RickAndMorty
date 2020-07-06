@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { Img } from './styles';
+import { Div } from './styles';
 
-export const CharacterCard = () => {
-
-    useEffect(() => {
-
-
-    })
+export const CharacterCard = ({ name, img }) => {
 
     return (
-        <div className="card">
-            <Img className="card-img-top" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Character" />
+        <Div className="card text-center">
+            <img className="card-img-top img-fluid" src={img} alt={name} />
             <div className="card-body">
-                <h5 className="card-title">Rick Sanchez</h5>
+                <h6 className="card-title">{name}</h6>
             </div>
-        </div>
+        </Div>
     )
 }
