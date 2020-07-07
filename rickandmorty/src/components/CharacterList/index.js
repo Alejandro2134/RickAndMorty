@@ -3,16 +3,17 @@ import React, { useState } from 'react';
 import { CharacterCard } from '../CharacterCard';
 import { useDataApi } from '../../hooks/useDataApi';
 
+import { Ring } from 'react-spinners-css';
 import { Button } from './styles';
 
 export const CharacterList = () => {
 
     const [url, setUrl] = useState('https://rickandmortyapi.com/api/character/')
 
-    const [characterData, loading, error] = useDataApi(url);
+    const [data, loading, error] = useDataApi(url);
 
     const handleClick = () => {
-        setUrl(characterData.info.next);
+        setUrl(data.info.next);
     }
 
     return (
@@ -20,18 +21,21 @@ export const CharacterList = () => {
             {
                 error 
                     ? <h1>Error</h1>
-                    : loading
-                        ? <h1>Cargando..</h1>
-                        : <React.Fragment>
-                            {characterData.results.map(character => <div className='col-md-3' key={character.id}>
-                                                                        <CharacterCard 
-                                                                            name={character.name} 
-                                                                            img={character.image}
-                                                                        /> 
-                                                                    </div> 
-                                                      )}
-                            <Button onClick={handleClick}>More Characters!</Button>
-                        </React.Fragment>        
+                    : <React.Fragment>
+                        {data.results.map(character => <div className='col-md-3' key={character.id}>
+                                                            <CharacterCard 
+                                                                name={character.name} 
+                                                                img={character.image}
+                                                            /> 
+                                                        </div> 
+                                          )
+                        }
+                        {
+                            loading
+                                ? <Ring color='#4cb5c3' />
+                                : <Button onClick={handleClick}>More Characters!</Button>
+                        }
+                    </React.Fragment>        
             }
         </div>
     )

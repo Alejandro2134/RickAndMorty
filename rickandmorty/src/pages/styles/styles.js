@@ -6,7 +6,7 @@ export const MenuItem = styled.div`
     color: white;
 
     ${props => props.active && css`
-        color: 	#4cb5c3;
+        color: #4cb5c3;
     `}
 `
 
