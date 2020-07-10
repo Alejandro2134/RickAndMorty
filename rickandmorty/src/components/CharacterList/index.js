@@ -33,7 +33,9 @@ export const CharacterList = () => {
                         {
                             loading
                                 ? <Ring color='#4cb5c3' />
-                                : <Button onClick={handleClick}>More Characters!</Button>
+                                : data.info.next
+                                    ? <Button onClick={handleClick}>More Locations!</Button>
+                                    : <React.Fragment />
                         }
                     </React.Fragment>        
             }

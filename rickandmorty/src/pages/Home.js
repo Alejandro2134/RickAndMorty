@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import EpisodeList from '../components/EpisodeList';
-import LocationList from '../components/LocationList';
+import { EpisodeList } from '../components/EpisodeList';
+import { LocationList } from '../components/LocationList';
 import { CharacterList } from '../components/CharacterList';
 
 import { MenuItem, Img } from './styles/styles';
