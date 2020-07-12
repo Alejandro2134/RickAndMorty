@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from '@reach/router';
 
 import { useDataApi } from '../../hooks/useDataApi';
 import { EpisodeCard } from '../EpisodeCard';
@@ -25,11 +24,9 @@ export const EpisodeList = () => {
                     : <React.Fragment>
                         {
                             data.results.map(episode => <div className='col-md-3' key={episode.id}>
-                                                            <Link to={`/episode/${episode.id}`}>
-                                                                <EpisodeCard 
-                                                                    name={episode.name}
-                                                                />
-                                                            </Link> 
+                                                            <EpisodeCard 
+                                                                name={episode.name}
+                                                            />
                                                         </div>
                                             )
                         }
