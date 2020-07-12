@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useDataApi = (url) => {
 
-    const [dataApi, setData] = useState({
+    const [dataApi, setDataApi] = useState({
         info: {},
         results: [],
     });
@@ -16,7 +16,7 @@ export const useDataApi = (url) => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                setData({
+                setDataApi({
                     info: data.info,
                     results: dataApi.results.concat(data.results), 
                 });
@@ -28,6 +28,32 @@ export const useDataApi = (url) => {
             })
 
     // eslint-disable-next-line
+    }, [url])
+
+    return [ dataApi, loading, error ];
+}
+
+export const useIndividualData = (url) => {
+
+    const [dataApi, setDataApi] = useState({});
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+
+        setLoading(true);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                setDataApi(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err);
+                setLoading(false);
+            })
+
     }, [url])
 
     return [ dataApi, loading, error ];

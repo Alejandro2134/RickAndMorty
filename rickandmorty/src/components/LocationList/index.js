@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@reach/router';
 
 import { useDataApi } from '../../hooks/useDataApi';
 import { LocationCard } from '../LocationCard';
@@ -24,9 +25,11 @@ export const LocationList = () => {
                     : <React.Fragment>
                         {
                             data.results.map(location => <div className='col-md-3' key={location.id}>
-                                                            <LocationCard 
-                                                                name={location.name}
-                                                            />
+                                                            <Link to={`/location/${location.id}`}>
+                                                                <LocationCard 
+                                                                    name={location.name}
+                                                                />
+                                                            </Link>
                                                          </div>
                                             )
                         }

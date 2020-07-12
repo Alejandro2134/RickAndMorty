@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@reach/router';
 
 import { CharacterCard } from '../CharacterCard';
 import { useDataApi } from '../../hooks/useDataApi';
@@ -23,10 +24,12 @@ export const CharacterList = () => {
                     ? <h1>Error</h1>
                     : <React.Fragment>
                         {data.results.map(character => <div className='col-md-3' key={character.id}>
-                                                            <CharacterCard 
-                                                                name={character.name} 
-                                                                img={character.image}
-                                                            /> 
+                                                            <Link to={`/character/${character.id}`}>
+                                                                <CharacterCard 
+                                                                    name={character.name} 
+                                                                    img={character.image}
+                                                                /> 
+                                                            </Link>     
                                                         </div> 
                                           )
                         }
@@ -34,7 +37,7 @@ export const CharacterList = () => {
                             loading
                                 ? <Ring color='#4cb5c3' />
                                 : data.info.next
-                                    ? <Button onClick={handleClick}>More Locations!</Button>
+                                    ? <Button onClick={handleClick}>More Characters!</Button>
                                     : <React.Fragment />
                         }
                     </React.Fragment>        

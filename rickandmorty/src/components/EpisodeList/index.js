@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@reach/router';
 
 import { useDataApi } from '../../hooks/useDataApi';
 import { EpisodeCard } from '../EpisodeCard';
@@ -24,10 +25,12 @@ export const EpisodeList = () => {
                     : <React.Fragment>
                         {
                             data.results.map(episode => <div className='col-md-3' key={episode.id}>
-                                                            <EpisodeCard 
-                                                                name={episode.name}
-                                                            />
-                                                         </div>
+                                                            <Link to={`/episode/${episode.id}`}>
+                                                                <EpisodeCard 
+                                                                    name={episode.name}
+                                                                />
+                                                            </Link> 
+                                                        </div>
                                             )
                         }
                         {
@@ -35,8 +38,7 @@ export const EpisodeList = () => {
                                 ? <Ring color='#4cb5c3' />
                                 : data.info.next
                                     ? <Button onClick={handleClick}>More Episodes!</Button>
-                                    : <React.Fragment />
-                               
+                                    : <React.Fragment />      
                         }
                     </React.Fragment>
             }

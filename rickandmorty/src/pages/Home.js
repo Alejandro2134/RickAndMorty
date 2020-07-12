@@ -6,9 +6,8 @@ import { CharacterList } from '../components/CharacterList';
 
 import { MenuItem, Img } from './styles/styles';
 import Logo from '../img/logo.svg';
-import './styles/style.css';
 
-const Home = () => {
+export const Home = () => {
 
     const [character, setCharacter] = useState(true);
     const [location, setLocation] = useState(false);
@@ -56,5 +55,3 @@ const Home = () => {
         </React.Fragment>
     )
 }
-
-export default Home;
